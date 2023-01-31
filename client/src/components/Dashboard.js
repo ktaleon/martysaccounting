@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import './component.css';
+import "./component.css";
 import Products from "./Products";
 import Expenses from "./Expenses";
 import SalesGraph from "./SalesGraph";
@@ -10,7 +10,7 @@ const Dashboard = () => {
     try {
       const res = await fetch("http://localhost:5000/dashboard/", {
         method: "GET",
-        headers: { Authorization: localStorage.getItem("token") }
+        headers: { Authorization: localStorage.getItem("token") },
       });
 
       const parseData = await res.json();
@@ -22,59 +22,94 @@ const Dashboard = () => {
 
   useEffect(() => {
     getProfile();
-  },[]);
+  }, []);
 
   return (
-    
-    <div className="container ">
-      <SalesGraph />
-      <h2 className="text-center">Welcome {name.charAt(0).toUpperCase() + name.slice(1)}</h2>
-      {/* <a href='/products'><button type="button" className="btn btn-danger">Products</button></a> */}
-      <div  class="container text-center">
-        <div class="row">
-          <div class="col">
-            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Products
-            </button>
+    <div className="container text-center pt-4">
+      <div className="row align-items-start">
+        <div className="col col-lg-2">
+          <h2 className="text-center">
+            Welcome {name.charAt(0).toUpperCase() + name.slice(1)}
+          </h2>
+          {/* <a href='/products'><button type="button" className="btn btn-danger">Products</button></a> */}
+          <div className="container text-center">
+            <div className="col">
+              <div className="row">
+                <button
+                  type="button"
+                  className="btn btn-danger btn md-block"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal">
+                  Products
+                </button>
+              </div>
+              <div className="row pt-1">
+                <button
+                  type="button"
+                  className="btn btn-danger btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#expensesModal">
+                  Expenses
+                </button>
+              </div>
+              <div className="row pt-1">
+                <button
+                  type="button"
+                  className="btn btn-danger btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#expensesModal">
+                  Stats
+                </button>
+              </div>
+            </div>
           </div>
-          <div class="col">
-            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#expensesModal">
-              Expenses
-            </button>
+          {/* Products Pop-over */}
+          <div
+            className="modal fade "
+            id="exampleModal"
+            tabIndex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content text-bg-dark">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="btn-close text-bg-light"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <Products />
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col">
-            <a href="/sales">
-            <button type="button" class="btn btn-danger btn-lg">
-              Stats
-            </button>
-            </a>
+          {/* Expenses Pop-over */}
+          <div
+            className="modal fade "
+            id="expensesModal"
+            tabIndex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content text-bg-dark">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="btn-close text-bg-light"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <Expenses />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-        {/* Products Pop-over */}
-        <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content text-bg-dark">
-              <div class="modal-header">
-                <button type="button" class="btn-close text-bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <Products />
-              </div>
-            </div>
-          </div>
-        </div>
-      {/* Expenses Pop-over */}
-      <div class="modal fade " id="expensesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content text-bg-dark">
-            <div class="modal-header">
-              <button type="button" class="btn-close text-bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <Expenses />
-            </div>
-          </div>
+        <div className="col">
+          <SalesGraph />
         </div>
       </div>
     </div>
