@@ -18,6 +18,7 @@ import Products from "./components/Products";
 import Pricing from "./components/Pricing";
 import Expenses from "./components/Expenses";
 import SalesGraph from "./components/SalesGraph";
+import NewProduct from "./components/NewProduct";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -175,6 +176,13 @@ function App() {
               path="/expenses"
               element={
                 isAuthenticated ? <Expenses /> : <Navigate to="/login" />
+              }
+            />
+            <Route
+              exact
+              path="/newproduct"
+              element={
+                isAuthenticated ? <NewProduct /> : <Navigate to="/login" />
               }
             />
             <Route exact path="/pricing" element={<Pricing />} />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./component.css";
 import Products from "./Products";
 import Expenses from "./Expenses";
+import NewProduct from "./NewProduct";
 import SalesGraph from "./SalesGraph";
 const Dashboard = () => {
   const [name, setName] = useState("");
@@ -31,13 +32,12 @@ const Dashboard = () => {
           <h2 className="text-center">
             Welcome {name.charAt(0).toUpperCase() + name.slice(1)}
           </h2>
-          {/* <a href='/products'><button type="button" className="btn btn-danger">Products</button></a> */}
           <div className="container text-center">
             <div className="col">
               <div className="row">
                 <button
                   type="button"
-                  className="btn btn-danger btn md-block"
+                  className="btn btn-danger btn"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal">
                   Products
@@ -57,8 +57,8 @@ const Dashboard = () => {
                   type="button"
                   className="btn btn-danger btn"
                   data-bs-toggle="modal"
-                  data-bs-target="#expensesModal">
-                  Stats
+                  data-bs-target="#newProductModal">
+                  New Product
                 </button>
               </div>
             </div>
@@ -103,6 +103,27 @@ const Dashboard = () => {
                 </div>
                 <div className="modal-body">
                   <Expenses />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="modal fade "
+            id="newProductModal"
+            tabIndex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content text-bg-dark">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="btn-close text-bg-light"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <NewProduct />
                 </div>
               </div>
             </div>

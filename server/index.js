@@ -125,8 +125,10 @@ app.post("/newproduct", authorization, async (req, res) => {
       product_price,
     } = req.body;
     const newProduct = await pool.query(
-      `INSERT INTO product (product_name, product_size, product_type, product_package, product_price) VALUES ('${product_name}', '${product_size}','${product_type}','${product_package}','${product_price}');`
+      `INSERT INTO product (product_name, product_size, product_type, product_package, product_price) VALUES ('${product_name}', '${product_size}','${product_type}','${product_package}', '${product_price}') RETURNING *`
     );
+    console.log(newProduct.rows[0]);
+    res.json(newProduct.rows[0]);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server error");
