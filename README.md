@@ -61,6 +61,11 @@ Installation Instructions:
 
         module.exports = pool;
 
+# Create .env variable
+
+    -Create a new file called '.env'
+    -Inside the '.env' file input 'JWT_SECRET = ()' (note: replace the parenthesis with a password like string)
+
 # Install the dependencies for Client
 
     - Open a new terminal
