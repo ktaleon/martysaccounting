@@ -184,6 +184,19 @@ app.get("/id", authorization, async (req, res) => {
   }
 });
 
+app.update("/updateproduct", authorization, async (req, res) => {
+  try {
+    const id = req.body;
+    const updateProduct = await pool.query(
+      `UPDATE product SET product_price='100' WHERE id=''`
+    );
+    res.json(updateProduct.rows[0]);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 app.listen(5000, () => {
   console.log("server has started on port 5000");
 });
