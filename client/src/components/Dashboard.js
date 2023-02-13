@@ -40,7 +40,7 @@ const Dashboard = () => {
                   className="btn btn-danger btn"
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal">
-                  Products
+                  Sold Products
                 </button>
               </div>
               <div className="row pt-1">
@@ -50,15 +50,6 @@ const Dashboard = () => {
                   data-bs-toggle="modal"
                   data-bs-target="#expensesModal">
                   Expenses
-                </button>
-              </div>
-              <div className="row pt-1">
-                <button
-                  type="button"
-                  className="btn btn-danger btn"
-                  data-bs-toggle="modal"
-                  data-bs-target="#newProductModal">
-                  New Product
                 </button>
               </div>
             </div>
@@ -85,7 +76,6 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          {/* Expenses Pop-over */}
           <div
             className="modal fade "
             id="expensesModal"
@@ -103,27 +93,6 @@ const Dashboard = () => {
                 </div>
                 <div className="modal-body">
                   <Expenses />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            className="modal fade "
-            id="newProductModal"
-            tabIndex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div className="modal-dialog">
-              <div className="modal-content text-bg-dark">
-                <div className="modal-header">
-                  <button
-                    type="button"
-                    className="btn-close text-bg-light"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"></button>
-                </div>
-                <div className="modal-body">
-                  <NewProduct />
                 </div>
               </div>
             </div>

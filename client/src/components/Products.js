@@ -1,3 +1,4 @@
+import { elements } from "chart.js";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "./component.css";
@@ -41,26 +42,34 @@ const Products = () => {
         product_package,
         amount_sold,
       };
-      const response = await fetch("http://localhost:5000/products", {
-        method: "POST",
-        headers: {
-          Authorization: localStorage.getItem("token"),
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
-      const parseRes = await response.json();
-      console.log(parseRes);
-
-      setInputs({
-        product_name: "",
-        product_size: "",
-        product_type: "",
-        product_package: "",
-        amount_sold: "",
-      });
-
-      toast.success("Successfully Added!");
+      if (
+        !!product_name &&
+        !!product_size &&
+        !!product_package &&
+        !!product_type &&
+        !!amount_sold
+      ) {
+        const response = await fetch("http://localhost:5000/products", {
+          method: "POST",
+          headers: {
+            Authorization: localStorage.getItem("token"),
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        });
+        const parseRes = await response.json();
+        console.log(parseRes);
+        setInputs({
+          product_name: "",
+          product_size: "",
+          product_type: "",
+          product_package: "",
+          amount_sold: "",
+        });
+        toast.success("Successfully Added!");
+      } else {
+        toast.error("Failed! Missing Input or Upload Error");
+      }
     } catch (error) {
       toast.error("Failed! Missing Input or Upload Error");
       console.error(error.message);
@@ -158,7 +167,7 @@ const Products = () => {
 
   return (
     <div className="p-3 text-bg-dark shadow-lg">
-      <h1 className="text-center">Products Sold</h1>
+      <h1 className="text-center">Sold Products</h1>
       <form onSubmit={onSubmitForm}>
         <select
           name="product_name"

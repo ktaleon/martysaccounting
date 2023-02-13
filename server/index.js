@@ -95,9 +95,9 @@ app.post("/products", authorization, async (req, res) => {
     const products = await pool.query(
       `SELECT id FROM product WHERE product_name = '${product_name}' AND product_size = '${product_size}' AND product_type = '${product_type}' AND product_package = '${product_package}'`
     );
-    res.json(products.rows[0].id);
-    const sold = await pool.query(
-      `INSERT INTO productsold (amount_sold,product_id,user_id) VALUES ('${amount_sold}', '${products.rows[0].id}', '${req.user}') RETURNING *`
+    const productid = products.rows[0].id;
+    await pool.query(
+      `INSERT INTO productsold (amount_sold, product_id, user_id) VALUES ('${amount_sold}', '${productid}', '${req.user}')`
     );
   } catch (error) {
     console.error(error.message);
