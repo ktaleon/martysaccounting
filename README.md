@@ -2,7 +2,7 @@
 
 The Purpose of this project is to provide my father's small business a simple accounting system that any of his employees can use.
 
-#Features
+Features:
 
 1. Login system for the owner and employees.
 2. Graph that shows data on how much is being sold per day
@@ -10,7 +10,7 @@ The Purpose of this project is to provide my father's small business a simple ac
 4. Inputs for daily sold products.
 5. Inputs for expenses.
 
-#Technologies Used
+Technologies Used:
 
 - React
 - NodeJS
