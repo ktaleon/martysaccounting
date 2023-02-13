@@ -65,11 +65,7 @@ Installation Instructions:
 
     - Open a new terminal
     - CD into client
-    - Install the following dependencies:
-        'npm i bootstrap'
-        'npm i chart.js'
-        'npm i date-fns --save'
-        'npm i --save react-toastify'
+    - Type into the command line 'npm install'
 
 # Turning on the project
 
