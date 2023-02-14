@@ -172,6 +172,7 @@ app.get("/data", authorization, async (req, res) => {
   }
   1;
 });
+
 app.get("/id", authorization, async (req, res) => {
   try {
     const user = await pool.query(
@@ -184,11 +185,17 @@ app.get("/id", authorization, async (req, res) => {
   }
 });
 
-app.update("/updateproduct", authorization, async (req, res) => {
+app.put("/updateproduct", authorization, async (req, res) => {
   try {
-    const id = req.body;
+    const {
+      product_name,
+      product_size,
+      product_type,
+      product_package,
+      updatedPrice,
+    } = req.body;
     const updateProduct = await pool.query(
-      `UPDATE product SET product_price='100' WHERE id=''`
+      `UPDATE product SET product_price='${updatedPrice}' WHERE product_name='${product_name}' AND product_size='${product_size}' AND product_type='${product_type}' AND product_package='${product_package}' RETURNING *`
     );
     res.json(updateProduct.rows[0]);
   } catch (error) {

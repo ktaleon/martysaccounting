@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import NewProduct from "./NewProduct";
+import UpdateProduct from "./UpdateProduct";
 const ProductTab = () => {
   const [headers, setHeaders] = useState([]);
   const [data, setData] = useState([]);
@@ -58,6 +59,13 @@ const ProductTab = () => {
         data-bs-target="#newProductModal">
         New Product
       </button>
+      <button
+        type="button"
+        className="btn btn-danger btn mb-5 ms-2"
+        data-bs-toggle="modal"
+        data-bs-target="#updateProductModal">
+        Update Price
+      </button>
       <div
         className="modal fade "
         id="newProductModal"
@@ -75,6 +83,27 @@ const ProductTab = () => {
             </div>
             <div className="modal-body">
               <NewProduct />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="modal fade "
+        id="updateProductModal"
+        tabIndex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content text-bg-dark">
+            <div className="modal-header">
+              <button
+                type="button"
+                className="btn-close text-bg-light"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              <UpdateProduct />
             </div>
           </div>
         </div>

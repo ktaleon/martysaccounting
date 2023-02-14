@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./component.css";
 import Products from "./Products";
 import Expenses from "./Expenses";
-import NewProduct from "./NewProduct";
 import SalesGraph from "./SalesGraph";
 const Dashboard = () => {
   const [name, setName] = useState("");
