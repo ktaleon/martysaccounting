@@ -20,6 +20,7 @@ CREATE TABLE product(
 
 CREATE TABLE productsold(
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
+    order_of_sale SERIAL NOT NULL,
     date_sold DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     amount_sold INTEGER NOT NULL,
     product_id uuid NOT NULL,
