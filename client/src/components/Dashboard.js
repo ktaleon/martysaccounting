@@ -3,6 +3,7 @@ import "./component.css";
 import Products from "./Products";
 import Expenses from "./Expenses";
 import SalesGraph from "./SalesGraph";
+import DeleteProductSold from "./DeleteProductSold";
 const Dashboard = () => {
   const [name, setName] = useState("");
 
@@ -40,6 +41,15 @@ const Dashboard = () => {
                   data-bs-toggle="modal"
                   data-bs-target="#exampleModal">
                   Sold Products
+                </button>
+              </div>
+              <div className="row pt-1">
+                <button
+                  type="button"
+                  className="btn btn-danger btn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#deleteModal">
+                  Delete Recent Data
                 </button>
               </div>
               <div className="row pt-1">
@@ -92,6 +102,27 @@ const Dashboard = () => {
                 </div>
                 <div className="modal-body">
                   <Expenses />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="modal fade "
+            id="deleteModal"
+            tabIndex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div className="modal-dialog">
+              <div className="modal-content text-bg-dark">
+                <div className="modal-header">
+                  <button
+                    type="button"
+                    className="btn-close text-bg-light"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <DeleteProductSold />
                 </div>
               </div>
             </div>

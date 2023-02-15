@@ -20,6 +20,7 @@ import SalesGraph from "./components/SalesGraph";
 import NewProduct from "./components/NewProduct";
 import ProductTab from "./components/ProductTab";
 import UpdateProduct from "./components/UpdateProduct";
+import DeleteProductSold from "./components/DeleteProductSold";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -178,7 +179,12 @@ function App() {
             />
             <Route exact path="/sales" element={<SalesGraph />} />
             <Route exact path="/pricing" element={<ProductTab />} />
-            <Route exact path="/UpdateProduct" element={<UpdateProduct />} />
+            <Route exact path="/updateproduct" element={<UpdateProduct />} />
+            <Route
+              exact
+              path="/deleteproductsold"
+              element={<DeleteProductSold />}
+            />
           </Routes>
         </div>
         <ToastContainer />

@@ -41,34 +41,24 @@ const Products = () => {
         product_package,
         amount_sold,
       };
-      if (
-        !!product_name &&
-        !!product_size &&
-        !!product_package &&
-        !!product_type &&
-        !!amount_sold
-      ) {
-        const response = await fetch("http://localhost:5000/products", {
-          method: "POST",
-          headers: {
-            Authorization: localStorage.getItem("token"),
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(body),
-        });
-        const parseRes = await response.json();
-        console.log(parseRes);
-        setInputs({
-          product_name: "",
-          product_size: "",
-          product_type: "",
-          product_package: "",
-          amount_sold: "",
-        });
-        toast.success("Successfully Added!");
-      } else {
-        toast.error("Failed! Missing Input or Upload Error");
-      }
+      const response = await fetch("http://localhost:5000/products", {
+        method: "POST",
+        headers: {
+          Authorization: localStorage.getItem("token"),
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(body),
+      });
+      const parseRes = await response.json();
+      console.log(parseRes);
+      setInputs({
+        product_name: "",
+        product_size: "",
+        product_type: "",
+        product_package: "",
+        amount_sold: "",
+      });
+      toast.success("Successfully Added!");
     } catch (error) {
       toast.error("Failed! Missing Input or Upload Error");
       console.error(error.message);

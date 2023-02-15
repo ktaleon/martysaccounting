@@ -166,7 +166,7 @@ const UpdateProduct = () => {
 
   return (
     <div className="p-3 text-bg-dark shadow-lg">
-      <h1 className="text-center">Sold Products</h1>
+      <h1 className="text-center">Update Price</h1>
       <form onSubmit={onSubmitForm}>
         <select
           name="product_name"
